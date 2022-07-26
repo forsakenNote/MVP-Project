@@ -1,9 +1,8 @@
 import React from 'react';
 
-function Display() {
+export default function Display() {
   return (
     <div>Display</div>
   )
 }
 
-export default Display;
