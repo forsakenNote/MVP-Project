@@ -1,55 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Search.css';
 
-// const keyNoFilter = "dbdb379a-6076-41bc-a46c-fcbcb6578cb4";
-// const baseNoFilter = "https://us-central1-mari-a5cc7.cloudfunctions.net/api";
+
+//NoFilter
+
+let baseURL = "https://us-central1-mari-a5cc7.cloudfunctions.net/api"
+let apiKey= "c077470d-e76f-46da-96bd-f2bf5f9cba75"
+// let query = location //test with name of city like "Barcelona" as a string to test your fetch works
 // const locationNoFilter = "/v1/spots/search/:query";
 
-export default function Search({ placeholder }) {
-  // const [loading, setLoading] = useState(false);
-  // const [location, setLocation] = useState("");
-  // const [photos, setPhotos] = useState(null);
-  // const [error, setError] = useState("");
+let url = `${baseURL}/v1/spots/search/:${location}`;
+console.log('check location from Searchbar', location);
 
-  // const handleInputChange = (event) => {
-  //   setLocation(event.target.value)
-  // }
+// let url = `${baseURL}/v1/spots/search/:barcelona`;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("form button clicked");
-    
+export default function Search( { placeholder }) {
+  const [location, setLocation] = useState("");
+  const [data, setData] = useState(null);
+  console.log("check data from Searchbar", data);
 
-  //   setLoading(true);
-  //   setError("");
 
-  //   let photosDisplay = await getPhotos();
-  //   setPhotos(photos);
-
-  //   setLocation("");
-  //   setLoading(false);
+  const handleInputChange = (event) => {
+    setLocation(event.target.value)
   }
 
-  // // const getPhotos = async () => {
-  // //   try {
-  // //     let response = await fetch(url);
-  // //     if (response.ok) {
-  // //       let data = await response.json();
-  // //       return data;
-  // //     } else {
-  // //       setError(`Server error: ${response.status} ${response.statusText}`); //on the server, but data does not exist or wrong parameters.
-  // //     }
-  // //   } catch (err) {
-  // //     setError("Network error:", err.message); //error 500 not in the server
-  // //   }
 
-  // //   return null;
-  // }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("form button clicked");
+  }
+
+
+
+  function getData(data) {
+
+    let options = {
+             method: 'GET',
+     headers: {
+       Accept: 'application/json',
+       'Cache-Control': 'no-cache',
+       'Content-Type': 'application/json',
+       Authorization: `Bearer ${apiKey}`,
+           },
+         }
+   
+         fetch(url,options)
+           .then(result => result.json())
+           .then(data => {
+             setData(data)
+           })
+           .catch(err => {
+             console.log(`Error: ${err.message}`)
+           });
+   
+       }
+   
+       useEffect(() => {
+         getData(data);
+       }, []) 
+
+
 
   return (
     <div className="search">
       <div className="searchInputs">
-        <input type="text" placeholder={placeholder}/>
+        <input 
+        type="text" 
+        placeholder={placeholder}
+        value={location}
+        onChange={handleInputChange}
+        />
       </div>
       <div className="dataResults"></div>
 
