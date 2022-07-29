@@ -8,12 +8,23 @@ import './components/map.css'
 
 
 export default function App() {
-  const [location, setLocation] = useState("");
+  const [latLng, setLatLng] = useState("");
+
+  console.log("check lat and lng", latLng);
+
+
+  const handleData = (newData) =>  {
+    setLatLng((state) => [...state, newData]);
+    console.log("check new data", newData); 
+  }
 
   return (
     <div className="App">
-      <MapApi/>
-      <Search placeholder="Enter a Location..." />
+      <Search 
+      locationData = {(newData) => handleData(newData)}/>
+      
+      <MapApi
+      dataLatLng = {latLng}/>
     </div>
   );
 }
