@@ -17,22 +17,21 @@ export default function MapApi (dataLatLng) {
         spots:[{id:1, place: "New York", lat:40.712776, long:-74.005974 },{id:2, place: "Barcelona", lat:41.385063, long:2.173404},{id:3, place: "Morocco", lat:31.791702, long:-7.092620}]
         }
 
-    console.log("check DATA", data);
+    console.log("check DATA", data.spots);
 
     let dataLat = 0;
     let dataLng = 0;
-    for(let i = 0; i < data.length; i++) {
-        console.log("check i", data[i]);
-        for(let j = 0; j < data[i].length; j++) {
-            console.log("check j", data[i][j]);
-            dataLat = data[i][j].lat;
-            dataLng = data[i][j].lng;
+    for(let i = 0; i < data.spots.length; i++) {
+        console.log("check i", data.spots[i]);
+        for(let j = 0; j < data.spots[i].length; j++) {
+            console.log("check j", data.spots[i][j]);
+            dataLat = data.spots[i][j].lat;
+            dataLng = data.spots[i][j].lng;
             return dataLat, dataLng;
         }
     }
 
 
-        
         
 
     return (

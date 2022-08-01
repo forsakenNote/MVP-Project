@@ -20,6 +20,7 @@ export default function Search() {
   const [location, setLocation] = useState("");
   const [data, setData] = useState(null);
   const [savedPlaces, setSavedPlaces] = useState([]);
+  const [savedPhotos, setSavedPhotos] = useState([]);
   console.log("check data from Searchbar", data);
  
 
@@ -35,13 +36,20 @@ export default function Search() {
     return savedPlaces
   }
 
+  const photoData = (savedPhotos) => {
+    setSavedPhotos(savedPhotos)
+    return savedPhotos
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("form button clicked");
     locationData(data);
+    photoData(data);
   }
 
   console.log("Check saved places", savedPlaces);
+  console.log("check saved photos", savedPhotos);
 
   function getData(data) {
 
@@ -70,7 +78,7 @@ export default function Search() {
          getData(data);
        }, []) 
 
-       console.log(data);
+       console.log("CHECK DATA", data.spots);
 
   return (
     <div className="search">

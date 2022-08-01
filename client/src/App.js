@@ -9,8 +9,11 @@ import './components/map.css'
 
 export default function App() {
   const [latLng, setLatLng] = useState("");
+  const [photosName, setPhotosName] = useState([]);
 
   console.log("check lat and lng", latLng);
+
+  console.log("check photos", photosName);
 
 
   const handleData = (newData) =>  {
@@ -18,13 +21,23 @@ export default function App() {
     console.log("check new data", newData); 
   }
 
+  const handleDataPhotos = (newPhotos) => {
+    setPhotosName((state) => [...state, newPhotos]);
+    console.log("check new photos", newPhotos);
+  }
+
   return (
     <div className="App">
       <Search 
-      locationData = {(newData) => handleData(newData)}/>
+      locationData = {(newData) => handleData(newData)}
+      photoData = {(newPhotos) => handleDataPhotos(newPhotos)}/>
       
       <MapApi
       dataLatLng = {latLng}/>
+
+      <Display
+      dataPhotos = {photosName}/>
+
     </div>
   );
 }
