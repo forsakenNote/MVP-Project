@@ -4,16 +4,17 @@ import logo from './logo.svg';
 import Search from './components/Search';
 import Display from './components/Display';
 import MapApi from './components/MapApi';
-import './components/map.css'
+import './components/map.css';
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 export default function App() {
   const [latLng, setLatLng] = useState("");
-  const [photosName, setPhotosName] = useState([]);
+  // const [photosName, setPhotosName] = useState([]);
 
   console.log("check lat and lng", latLng);
 
-  console.log("check photos", photosName);
+  // console.log("check photos", photosName);
 
 
   const handleData = (newData) =>  {
@@ -21,22 +22,23 @@ export default function App() {
     console.log("check new data", newData); 
   }
 
-  const handleDataPhotos = (newPhotos) => {
-    setPhotosName((state) => [...state, newPhotos]);
-    console.log("check new photos", newPhotos);
-  }
+  // const handleDataPhotos = (newPhotos) => {
+  //   setPhotosName((state) => [...state, newPhotos]);
+  //   console.log("check new photos", newPhotos);
+  // }
 
   return (
     <div className="App">
       <Search 
       locationData = {(newData) => handleData(newData)}
-      photoData = {(newPhotos) => handleDataPhotos(newPhotos)}/>
+      // 
+      />
       
       <MapApi
       dataLatLng = {latLng}/>
 
-      <Display
-      dataPhotos = {photosName}/>
+      {/* <Display
+      dataPhotos = {photosName}/> */}
 
     </div>
   );

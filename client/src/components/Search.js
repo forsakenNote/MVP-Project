@@ -1,3 +1,4 @@
+import e from 'express';
 import React, { useState, useEffect } from 'react';
 import './Search.css';
 
@@ -18,10 +19,10 @@ let apiKey2= "0aca9d6b-fc90-4c78-958e-9f5a8d354ccf"
 
 export default function Search() {
   const [location, setLocation] = useState("");
-  const [data, setData] = useState(null);
+  const [dataObject, setDataObject] = useState(null);
   const [savedPlaces, setSavedPlaces] = useState([]);
-  const [savedPhotos, setSavedPhotos] = useState([]);
-  console.log("check data from Searchbar", data);
+  // const [savedPhotos, setSavedPhotos] = useState([]);
+  console.log("check data from Searchbar", dataObject);
  
 
   let url = `${baseURL}/v1/spots/search/:${location}`;
@@ -36,22 +37,22 @@ export default function Search() {
     return savedPlaces
   }
 
-  const photoData = (savedPhotos) => {
-    setSavedPhotos(savedPhotos)
-    return savedPhotos
-  }
+  // const photoData = (savedPhotos) => {
+  //   setSavedPhotos(savedPhotos)
+  //   return savedPhotos
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("form button clicked");
-    locationData(data);
-    photoData(data);
+    locationData(dataObject);
+    // photoData(data);
   }
 
   console.log("Check saved places", savedPlaces);
-  console.log("check saved photos", savedPhotos);
+  // console.log("check saved photos", savedPhotos);
 
-  function getData(data) {
+  function getData(dataObject) {
 
     let options = {
              method: 'GET',
@@ -59,26 +60,45 @@ export default function Search() {
        Accept: 'application/json',
        'Cache-Control': 'no-cache',
        'Content-Type': 'application/json',
-       Authorization: `Bearer ${apiKey2}`,
+       Authorization: `Bearer ${apiKey}`,
            },
          }
    
          fetch(url,options)
            .then(result => result.json())
-           .then(data => {
-             setData(data)
+           .then(dataObject => {
+             setDataObject(dataObject)
            })
            .catch(err => {
              console.log(`Error: ${err.message}`)
            });
    
        }
-   
+
        useEffect(() => {
-         getData(data);
+         getData(dataObject);
        }, []) 
 
-       console.log("CHECK DATA", data.spots);
+
+
+      // dataObject.data.spots.map(e => e.photos) WORKS
+
+      //  console.log("CHECK DATA", dataObject.data.spots.map(e => console.log(e.photos)));
+
+      //  console.log("CHECK DATA", dataObject.data);
+
+      //  let apiLat = dataObject.data.spots.map(e => e.lat); WORKS
+      //  let apiLng = dataObject.data.spots.map(e => e.lng); WORKS
+
+      //  let apiPhotos = dataObject.data.spots.map(e => e.photos);
+
+      // TO TEST:
+      // map apiPhotos to access urls
+      // e.photo.map / e.photos.urls.map
+       
+  
+
+
 
   return (
     <div className="search">

@@ -35,7 +35,7 @@ export default function Display(dataPhotosName) {
   return (
     <div className="Display">
       <h3>Photos and Name</h3>
-      {console.log(photo, name)}
+      {/* {console.log(photo, name)} */}
     </div>
   )
 }
