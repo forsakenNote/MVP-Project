@@ -37,8 +37,8 @@ export default function App() {
       <MapApi
       dataLatLng = {latLng}/>
 
-      {/* <Display
-      dataPhotos = {photosName}/> */}
+      <Display
+      dataPhotos = {photosName}/>
 
     </div>
   );

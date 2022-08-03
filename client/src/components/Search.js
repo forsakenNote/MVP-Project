@@ -120,7 +120,6 @@ export default function Search() {
 
 
 
-
    // EXTRAC LAT AND LNG
       //  Create variable that access lat and lng in array of objects (data) 
 
