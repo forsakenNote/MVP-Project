@@ -1,27 +1,22 @@
-import React from 'react';
+import React from "react";
 
-export default function Display(displayName, displayPhotos) {
-
+export default function Display({ displayName, displayPhotos }) {
   return (
     <div className="Display">
       <h3>LIST OF LOCATIONS</h3>
-        <ul>
-          <h5>{displayName}</h5>
-          {/* <img alt="projectImage" src={displayPhotos} /> */}
-        </ul>
+      <ul>
+        <h5>{displayName}</h5>
+        {/* <img alt="projectImage" src={displayPhotos} /> */}
+      </ul>
     </div>
-  )
+  );
 }
 
+// let photo = [];
+// let name = "";
 
-
- // let photo = [];
-    // let name = "";
-
-    // photo = dataPhotosName.spots[0].name;
-    // name = dataPhotosName.spots[0].photos[0].urls.regular;
-
-
+// photo = dataPhotosName.spots[0].name;
+// name = dataPhotosName.spots[0].photos[0].urls.regular;
 
 // let name = "";
 // for(let i = 0; i < dataPhotosName.length; i++) {

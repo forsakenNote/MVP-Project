@@ -13,19 +13,18 @@ export default function App() {
   const [appName, setAppName] = useState("");
   // const [appPhotos, setAppPhotos] = useState([]);
   // console.log("check photos", photosName);
+  const [spots, setSpots] = useState([]);
 
-  const handleData = (newLat, newLng, newName) => {
-    setAppLat(newLat);
-    console.log("check new lat", newLat);
+  // const handleData = (newLat, newLng, newName) => {
+  //   setAppLat(newLat);
+  //   console.log("check new lat", newLat);
 
-    setAppLng(newLng);
-    console.log("check new lng", newLng);
+  //   setAppLng(newLng);
+  //   console.log("check new lng", newLng);
 
-    setAppName(newName);
-    console.log("check new lng", newName);
-
-
-  };
+  //   setAppName(newName);
+  //   console.log("check new lng", newName);
+  // };
 
   // const handleDataPhotos = (newPhotos) => {
   //   setPhotosName((state) => [...state, newPhotos]);
@@ -35,21 +34,20 @@ export default function App() {
   return (
     <div className="App">
       <Search
-        locationLatProp={(newLat, newLng, newName) => handleData(newLat, newLng, newName)}
+        // locationLatProp={(newLat, newLng, newName) =>
+        //   handleData(newLat, newLng, newName)
+        // }
         // locationLng={(newLng) => handleData(newLng)}
         // locationName={(newName) => handleData(newName)}
         //
+        setSpots={setSpots}
       />
 
-      <MapApi 
-      mapLat={appLat}
-      mapLng={appLng}
-      mapName={appName}
-      />
+      <MapApi spots={spots} />
 
-      <Display 
-      displayName={appName}
-      // displayPhotos={appPhotos}
+      <Display
+        displayName={appName}
+        // displayPhotos={appPhotos}
       />
     </div>
   );
