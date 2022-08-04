@@ -3,10 +3,39 @@ import "./map.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 // import L from "leaflet";
 
-export default function MapApi(dataLatLng) {
+export default function MapApi(mapLat, mapLng, mapName) {
+
+console.log("CHECK MAP LAT AND LNG", mapLat, mapLng);
+
+  return (
+    <div className="App">
+      <MapContainer
+        className="map"
+        center={[51.505, -0.09]}
+        zoom={0}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+
+        <Marker 
+        // position={[51.505, -0.09]}
+        position={[mapLat, mapLng]}>
+          
+
+          <Popup>
+            {mapName} <br />
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+  );
+}
 
 
-  console.log("CHECK DATALATLNG", dataLatLng);
+
   // const data = {
   //     spots:[{id:1, place: "New York", lat:40.712776, long:-74.005974 },{id:2, place: "Barcelona", lat:41.385063, long:2.173404},{id:3, place: "Morocco", lat:31.791702, long:-7.092620}]
   //     }
@@ -25,30 +54,7 @@ export default function MapApi(dataLatLng) {
   //     }
   // }
 
-  return (
-    <div className="App">
-      <MapContainer
-        className="map"
-        center={[51.505, -0.09]}
-        zoom={0}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
 
-        <Marker position={[51.505, -0.09]}>
-          {/* position={[dataLat, dataLng]}> */}
-
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </div>
-  );
-}
 
 // icon={getIcon(20)}
 // position= {[latNoFilter, lngNoFilter]}

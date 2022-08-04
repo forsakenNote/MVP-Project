@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import Search from "./components/Search";
 import Display from "./components/Display";
 import MapApi from "./components/MapApi";
@@ -8,20 +8,20 @@ import "./components/map.css";
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function App() {
-  const [appLat, setAppLat] = useState("");
-  const [appLng, setAppLng] = useState("");
+  const [appLat, setAppLat] = useState(null);
+  const [appLng, setAppLng] = useState(null);
   const [appName, setAppName] = useState("");
-  // const [photosName, setPhotosName] = useState([]);
+  // const [appPhotos, setAppPhotos] = useState([]);
   // console.log("check photos", photosName);
 
   const handleData = (newLat, newLng, newName) => {
-    setAppLat((state) => [...state, newLat]);
+    setAppLat(newLat);
     console.log("check new lat", newLat);
 
-    setAppLng((state) => [...state, newLng]);
+    setAppLng(newLng);
     console.log("check new lng", newLng);
 
-    setAppName((state) => [...state, newName]);
+    setAppName(newName);
     console.log("check new lng", newName);
 
 
@@ -35,15 +35,22 @@ export default function App() {
   return (
     <div className="App">
       <Search
-        locationLat={(newLat) => handleData(newLat)}
-        locationLng={(newLng) => handleData(newLng)}
-        locationName={(newName) => handleData(newName)}
+        locationLatProp={(newLat, newLng, newName) => handleData(newLat, newLng, newName)}
+        // locationLng={(newLng) => handleData(newLng)}
+        // locationName={(newName) => handleData(newName)}
         //
       />
 
-      <MapApi dataLa={appLat && appLng} />
+      <MapApi 
+      mapLat={appLat}
+      mapLng={appLng}
+      mapName={appName}
+      />
 
-      <Display dataPhotos={appName} />
+      <Display 
+      displayName={appName}
+      // displayPhotos={appPhotos}
+      />
     </div>
   );
 }

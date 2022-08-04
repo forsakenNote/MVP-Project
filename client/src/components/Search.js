@@ -4,7 +4,7 @@ import "./Search.css";
 //NoFilter
 
 let baseURL = "https://us-central1-mari-a5cc7.cloudfunctions.net/api";
-let apiKey = "c077470d-e76f-46da-96bd-f2bf5f9cba75";
+// let apiKey = "c077470d-e76f-46da-96bd-f2bf5f9cba75";
 let apiKey2 = "0aca9d6b-fc90-4c78-958e-9f5a8d354ccf";
 
 // let query = location //test with name of city like "Barcelona" as a string to test your fetch works
@@ -15,14 +15,14 @@ let apiKey2 = "0aca9d6b-fc90-4c78-958e-9f5a8d354ccf";
 
 // let url = `${baseURL}/v1/spots/search/:barcelona`;
 
-export default function Search() {
+export default function Search({locationLatProp}) {
   const [location, setLocation] = useState("");
   const [dataObject, setDataObject] = useState(null);
   // const [savedPlaces, setSavedPlaces] = useState([]);
   // const [savedPhotos, setSavedPhotos] = useState([]);
-  const [savedLat, setSavedLat] = useState([]);
-  const [savedLng, setSavedLng] = useState([]);
-  const [savedName, setSavedName] = useState([]);
+  const [savedLat, setSavedLat] = useState(null);
+  const [savedLng, setSavedLng] = useState(null);
+  const [savedName, setSavedName] = useState("");
 
 
   console.log("check data from Searchbar", dataObject);
@@ -43,20 +43,20 @@ export default function Search() {
 
   // console.log("Check saved places", savedPlaces);
 
-  const locationLat = (savedLat) => {
-    setSavedLat(savedLat);
-    return savedLat;
-  };
+  // const locationLat = (savedLat) => {
+  //   setSavedLat(savedLat);
+  //   return savedLat;
+  // };
 
-  const locationLng = (savedLng) => {
-    setSavedLng(savedLng);
-    return savedLng;
-  };
+  // const locationLng = (savedLng) => {
+  //   setSavedLng(savedLng);
+  //   return savedLng;
+  // };
   
-  const locationName = (savedName) => {
-    setSavedName(savedName);
-    return savedName;
-  };
+  // const locationName = (savedName) => {
+  //   setSavedName(savedName);
+  //   return savedName;
+  // };
   
   //   const locationPhoto = (savedPhotos) => {
   //   setSavedPhotos(savedPhotos)
@@ -68,9 +68,9 @@ export default function Search() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("form button clicked");
-    locationLat(apiLat);
-    locationLng(apiLng);
-    locationName(apiName);
+    locationLatProp(apiLat, apiLng, apiName);
+    // locationLng(apiLng);
+    // locationName(apiName);
     // locationPhoto(apiPhoto);
   };
 
@@ -82,7 +82,7 @@ export default function Search() {
         Accept: "application/json",
         "Cache-Control": "no-cache",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiKey2}`,
       },
     };
 
@@ -102,9 +102,7 @@ export default function Search() {
 
 
 
-  //  console.log("CHECK DATA", dataObject.data.spots.map(e => console.log(e.photos)));
-
-   console.log("CHECK DATA", dataObject.data);
+   console.log("CHECK DATA", dataObject);
 
   // LAT AND LNG WORKS
    let apiLat = dataObject.data.spots.map(e => e.lat); 
@@ -121,16 +119,20 @@ export default function Search() {
 
 
      // PHOTOS WORKS
-  let apiPhotos = dataObject.data.spots.map(e => e.photos);
-  console.log("CHECK PHOTOS", apiPhotos );
+  // let apiPhotos = dataObject.data.spots.map(e => e.photos);
+  // console.log("CHECK PHOTOS", apiPhotos );
+
 
   // TO TEST:
+
+   //  console.log("CHECK DATA", dataObject.data.spots.map(e => console.log(e.photos)));
+
   // map apiPhotos to access urls
   // e.photo.map / e.photos.urls.map
 
   // let apiUrls = apiPhotos.map(e => e.urls);
+  // let apiUrls = apiPhotos.flat().map(e => e.urls)
   // console.log("CHECK URLS", apiUrls);
-
 
 
 
@@ -154,25 +156,6 @@ export default function Search() {
   );
 }
 
-// EXTRAC LAT AND LNG
-//  Create variable that access lat and lng in array of objects (data)
 
-// let latNoFilter = [];
-// data.spots.lat
-// latNoFilter = data.map(spots => spots.lat);
 
-// let lngNoFilter = [];
-// data.spots.lng
-// lngNoFilter = data.map(spots => spots.lng);
 
-//  Pass variable to App.js
-// Pass variable to MapApi.js and map throught it.
-
-// function getLatLng(data) {
-// let latNoFilter = [];
-// let lngNoFilter = [];
-
-// let latNoFilter = data.map(spot => spots.lat);
-// let lngNoFilter = data.map(spot => spots.lgn);
-
-// }
