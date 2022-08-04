@@ -4,12 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 // import L from "leaflet";
 
 export default function MapApi(dataLatLng) {
-  // function getIcon(_iconSize) {
-  //     return L.icon( {
-  //         iconUrl: require("./src/icons/icon.pgn"),
-  //         iconSize: [_iconSize]
-  //     })
-  // }
+
 
   console.log("CHECK DATALATLNG", dataLatLng);
   // const data = {
@@ -87,3 +82,13 @@ export default function MapApi(dataLatLng) {
 //         position = {[e.spots.lat, e.spots.lng]}>
 //         </Marker>
 //     ))} */}
+
+
+// ICON
+
+  // function getIcon(_iconSize) {
+  //     return L.icon( {
+  //         iconUrl: require("./src/icons/icon.pgn"),
+  //         iconSize: [_iconSize]
+  //     })
+  // }

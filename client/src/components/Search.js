@@ -18,8 +18,13 @@ let apiKey2 = "0aca9d6b-fc90-4c78-958e-9f5a8d354ccf";
 export default function Search() {
   const [location, setLocation] = useState("");
   const [dataObject, setDataObject] = useState(null);
-  const [savedPlaces, setSavedPlaces] = useState([]);
+  // const [savedPlaces, setSavedPlaces] = useState([]);
   // const [savedPhotos, setSavedPhotos] = useState([]);
+  const [savedLat, setSavedLat] = useState([]);
+  const [savedLng, setSavedLng] = useState([]);
+  const [savedName, setSavedName] = useState([]);
+
+
   console.log("check data from Searchbar", dataObject);
 
   let url = `${baseURL}/v1/spots/search/:${location}`;
@@ -29,25 +34,46 @@ export default function Search() {
     setLocation(event.target.value);
   };
 
-  const locationData = (savedPlaces) => {
-    setSavedPlaces(savedPlaces);
-    return savedPlaces;
+
+
+  // const locationData = (savedPlaces) => {
+  //   setSavedPlaces(savedPlaces);
+  //   return savedPlaces;
+  // };
+
+  // console.log("Check saved places", savedPlaces);
+
+  const locationLat = (savedLat) => {
+    setSavedLat(savedLat);
+    return savedLat;
   };
 
-  // const photoData = (savedPhotos) => {
+  const locationLng = (savedLng) => {
+    setSavedLng(savedLng);
+    return savedLng;
+  };
+  
+  const locationName = (savedName) => {
+    setSavedName(savedName);
+    return savedName;
+  };
+  
+  //   const locationPhoto = (savedPhotos) => {
   //   setSavedPhotos(savedPhotos)
-  //   return savedPhotos
+  //   return savedPhotos;
   // }
+   // console.log("check saved photos", savedPhotos);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("form button clicked");
-    locationData(dataObject);
-    // photoData(data);
+    locationLat(apiLat);
+    locationLng(apiLng);
+    locationName(apiName);
+    // locationPhoto(apiPhoto);
   };
 
-  console.log("Check saved places", savedPlaces);
-  // console.log("check saved photos", savedPhotos);
 
   function getData(dataObject) {
     let options = {
@@ -74,20 +100,39 @@ export default function Search() {
     getData(dataObject);
   }, []);
 
-  // dataObject.data.spots.map(e => e.photos) WORKS
+
 
   //  console.log("CHECK DATA", dataObject.data.spots.map(e => console.log(e.photos)));
 
-  //  console.log("CHECK DATA", dataObject.data);
+   console.log("CHECK DATA", dataObject.data);
 
-  //  let apiLat = dataObject.data.spots.map(e => e.lat); WORKS
-  //  let apiLng = dataObject.data.spots.map(e => e.lng); WORKS
+  // LAT AND LNG WORKS
+   let apiLat = dataObject.data.spots.map(e => e.lat); 
+   let apiLng = dataObject.data.spots.map(e => e.lng); 
 
-  //  let apiPhotos = dataObject.data.spots.map(e => e.photos);
+   console.log("CHECK LAT", apiLat);
+   console.log("CHECK LNG", apiLng);
+
+
+   //NAME 
+
+   let apiName = dataObject.data.spots.map(e => e.name);
+   console.log("CHECK NAME", apiName);
+
+
+     // PHOTOS WORKS
+  let apiPhotos = dataObject.data.spots.map(e => e.photos);
+  console.log("CHECK PHOTOS", apiPhotos );
 
   // TO TEST:
   // map apiPhotos to access urls
   // e.photo.map / e.photos.urls.map
+
+  // let apiUrls = apiPhotos.map(e => e.urls);
+  // console.log("CHECK URLS", apiUrls);
+
+
+
 
   return (
     <div className="search">

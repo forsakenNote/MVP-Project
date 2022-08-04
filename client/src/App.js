@@ -8,16 +8,23 @@ import "./components/map.css";
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function App() {
-  const [latLng, setLatLng] = useState("");
-  const [photosName, setPhotosName] = useState([]);
-
-  console.log("check lat and lng", latLng);
-
+  const [appLat, setAppLat] = useState("");
+  const [appLng, setAppLng] = useState("");
+  const [appName, setAppName] = useState("");
+  // const [photosName, setPhotosName] = useState([]);
   // console.log("check photos", photosName);
 
-  const handleData = (newData) => {
-    setLatLng((state) => [...state, newData]);
-    console.log("check new data", newData);
+  const handleData = (newLat, newLng, newName) => {
+    setAppLat((state) => [...state, newLat]);
+    console.log("check new lat", newLat);
+
+    setAppLng((state) => [...state, newLng]);
+    console.log("check new lng", newLng);
+
+    setAppName((state) => [...state, newName]);
+    console.log("check new lng", newName);
+
+
   };
 
   // const handleDataPhotos = (newPhotos) => {
@@ -28,13 +35,15 @@ export default function App() {
   return (
     <div className="App">
       <Search
-        locationData={(newData) => handleData(newData)}
+        locationLat={(newLat) => handleData(newLat)}
+        locationLng={(newLng) => handleData(newLng)}
+        locationName={(newName) => handleData(newName)}
         //
       />
 
-      <MapApi dataLatLng={latLng} />
+      <MapApi dataLa={appLat && appLng} />
 
-      <Display dataPhotos={photosName} />
+      <Display dataPhotos={appName} />
     </div>
   );
 }
