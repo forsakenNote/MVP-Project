@@ -18,53 +18,23 @@ let apiKey2 = "b1626725-5f9f-4e52-a2ca-2ec7859e58a5";
 
 export default function Search({ setSpots }) {
   const [location, setLocation] = useState("");
-  //const [dataObject, setDataObject] = useState(null);
-  // // const [savedPlaces, setSavedPlaces] = useState([]);
-  // // const [savedPhotos, setSavedPhotos] = useState([]);
-  //const [savedLat, setSavedLat] = useState("");
-  //const [savedLng, setSavedLng] = useState("");
-  //const [savedName, setSavedName] = useState("");
 
-  // console.log("check data from Searchbar", dataObject);
 
-  // let url = `${baseURL}/v1/spots/search/:${location}`;
-  // console.log("check location from Searchbar", location);
-
+  //update state of component
   const handleInputChange = (event) => {
     setLocation(event.target.value);
   };
 
-  // const locationData = (savedPlaces) => {
-  //   setSavedPlaces(savedPlaces);
-  //   return savedPlaces;
-  // };
 
-  // console.log("Check saved places", savedPlaces);
-
-  // const locationLat = (savedLat) => {
-  //   setSavedLat(savedLat);
-  //   return savedLat;
-  // };
-
-  // const locationLng = (savedLng) => {
-  //   setSavedLng(savedLng);
-  //   return savedLng;
-  // };
-
-  // const locationName = (savedName) => {
-  //   setSavedName(savedName);
-  //   return savedName;
-  // };
-
-  //   const locationPhoto = (savedPhotos) => {
-  //   setSavedPhotos(savedPhotos)
-  //   return savedPhotos;
-  // }
-  // console.log("check saved photos", savedPhotos);
-
+  //gets current value from the data input and pass it as prop
   const handleSubmit = (event) => {
     // event.preventDefault(); --no need because no form
     console.log("form button clicked");
+
+
+//Fetch code to get data from the API NoFilter
+//Accessing the spots that would let us extract lat and lng
+//passing spots to App.js
 
     let options = {
       method: "GET",
@@ -79,47 +49,15 @@ export default function Search({ setSpots }) {
     fetch(`${baseURL}/v1/spots/search/:${location}`, options)
       .then((result) => result.json())
       .then((dataObject) => {
-        //   setDataObject(dataObject);
         setSpots(dataObject.data.spots);
       })
       .catch((err) => {
         console.log(`Error: ${err.message}`);
       });
-
-    // locationLatProp(apiLat, apiLng, apiName);
-    // locationLng(apiLng);
-    // locationName(apiName);
-    // locationPhoto(apiPhoto);
-    // LAT AND LNG WORKS
-
-    // let apiLat = dataObject.data.spots.map((e) => e.lat);
-    // let apiLng = dataObject.data.spots.map((e) => e.lng);
-
-    // console.log("CHECK LAT", apiLat);
-    // console.log("CHECK LNG", apiLng);
   };
 
-  // console.log("CHECK DATA", dataObject);
 
-  // //NAME
-
-  //let apiName = dataObject.data.spots.map((e) => e?.name);
-  // console.log("CHECK NAME", apiName);
-
-  // PHOTOS WORKS
-  // let apiPhotos = dataObject.data.spots.map(e => e.photos);
-  // console.log("CHECK PHOTOS", apiPhotos );
-
-  // TO TEST:
-
-  //  console.log("CHECK DATA", dataObject.data.spots.map(e => console.log(e.photos)));
-
-  // map apiPhotos to access urls
-  // e.photo.map / e.photos.urls.map
-
-  // let apiUrls = apiPhotos.map(e => e.urls);
-  // let apiUrls = apiPhotos.flat().map(e => e.urls)
-  // console.log("CHECK URLS", apiUrls);
+//Creating the search bar to input location name
 
   return (
     <div className="search">
