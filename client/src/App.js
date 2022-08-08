@@ -12,13 +12,19 @@ export default function App() {
   const [spots, setSpots] = useState([]);
 
 
-  function logoImaquo(){
+const logoImaquo = () => {
     return <img src={logo} alt="logo"/>
   }
 
 
   return (
     <div className="App">
+      
+      <div className="logo">
+       {logoImaquo()} 
+      </div>
+
+      <div className="container">
       <Search
         setSpots={setSpots}
       />
@@ -28,6 +34,8 @@ export default function App() {
       <Display
         displayName={appName}
       />
+      </div>
+
     </div>
   );
 }

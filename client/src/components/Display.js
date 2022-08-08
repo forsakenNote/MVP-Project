@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Display({ displayName, displayPhotos }) {
+export default function Display({ displayName}) {
   return (
     <div className="Display">
       <h3>LIST OF LOCATIONS</h3>

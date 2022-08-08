@@ -2,9 +2,16 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow:  9px 9px 18px #d1d1d1,
+             -9px -9px 18px #ffffff;  
+  float: left;
+  max-width: 50%;
+  max-height: 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
 }
 
 @media (prefers-reduced-motion: no-preference) {
