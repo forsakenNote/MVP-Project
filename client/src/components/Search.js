@@ -42,7 +42,7 @@ export default function Search({ setSpots }) {
         Accept: "application/json",
         "Cache-Control": "no-cache",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey2}`,
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY_1}`,
       },
     };
 
