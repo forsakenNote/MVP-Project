@@ -2,17 +2,17 @@
   text-align: center;
 }
 
-.logo {
+/* .logo {
   border-radius: 4px;
   background: #ffffff;
   box-shadow:  9px 9px 18px #d1d1d1,
              -9px -9px 18px #ffffff;  
   float: left;
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 20%;
+  max-height: 20%;
   background-repeat:   no-repeat;
   background-size:     cover;
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
