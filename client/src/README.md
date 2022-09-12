@@ -5,8 +5,12 @@ Figma design [https://www.figma.com/file/pjZARGm4TxQqjmSyxWqjrL/Photo-Location-M
 
 # API Routes
 
-NoFilter [https://getnofilter.com/developers]
-Leaflet React.js [https://react-leaflet.js.org/]
+NoFilter API installation instructions [https://getnofilter.com/developers]
+    - GET method
+    - Fetch code: add API key (use personal email). 
+
+
+Leaflet React.js installation instructions [https://react-leaflet.js.org/]
 
 API route [https://docs.google.com/document/d/1ZJa7wSqmPTbjDoaKZxtNljLd90A-ZQ5UxWcKjIjZ9IM/edit#]
 
