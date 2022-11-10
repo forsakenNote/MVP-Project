@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "core-js-pure": "^3.25.3",
+    "create-react-app": "^5.0.1",
+    "react-tetris": "^0.3.0"
+  }
+}
